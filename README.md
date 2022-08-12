@@ -1,6 +1,6 @@
-# instagramclone
+# instagram-clone-firebase
 
-Live Demo: https://insta-clone-vue.netlify.app/
+
 
 
 ## Project setup

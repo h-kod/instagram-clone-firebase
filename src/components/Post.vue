@@ -1,7 +1,7 @@
 <template>
-  <div class="post">
+  <div class="post ">
     <!-- header -->
-    <div class="head section">
+    <div class="row">
       <div class="head-author">
         <div class="head-avatar">
           <img
@@ -20,11 +20,11 @@
             <CustomText size="xsmall">Montreal, Quebec</CustomText>
           </div>
         </div>
-      </div>
-      <div class="head-more">
-        <button type="button">
-          <IconMore />
-        </button>
+        <div class="head-more">
+          <button type="button">
+            <IconMore />
+          </button>
+        </div>
       </div>
     </div>
 

@@ -7,7 +7,7 @@
       />
     </div>
     <div class="share">
-      <CustomText tag="b" size="xllarge">
+      <CustomText tag="b" size="xlarge">
         Start capturing and sharing your moments.
       </CustomText>
       <CustomText size="xlarge">

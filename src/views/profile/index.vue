@@ -12,7 +12,7 @@
       <div class="head-profile-detail">
         <div class="detail-name">
           <div class="detail-name-username">
-            <CustomText class="thin" size="xxlarge">username</CustomText>
+            <CustomText class="thin" size="xlarge">username</CustomText>
           </div>
           <div class="detail-name-edit">
             <button class="action-edit" type="button">
@@ -253,23 +253,10 @@ export default {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    padding-left: 25%;
-    padding-right: 25%;
-    padding-bottom: 14px;
-    padding-top: 14px;
+    padding: 14px 25%;
     font-weight: 500;
     font-size: 13px;
     border-top: 2px solid rgb(231, 231, 231);
-  }
-
-  .tabs-item-deactive {
-    color: #aaa;
-  }
-
-  .tabs-item-active {
-    color: black;
-    border-top: 1px solid black;
-    padding-top:15px
   }
 
   .tab-view {
@@ -305,7 +292,6 @@ export default {
 
   .detail-name {
     display: flex;
-    align-items: flex-start;
     justify-content: space-between;
     padding-right: 40px;
     padding-top: 20px;
@@ -314,7 +300,6 @@ export default {
 
   .detail-numbers {
     display: flex;
-    align-items: flex-start;
     justify-content: space-between;
 
     padding-top: 20px;

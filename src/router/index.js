@@ -17,6 +17,18 @@ const routes = [
       import(/* webpackChunkName: "direct" */ "../views/direct/"),
   },
   {
+    path: "/login",
+    name: "Login",
+    component: () =>
+      import(/* webpackChunkName: "direct" */ "../views/login/"),
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: () =>
+      import(/* webpackChunkName: "direct" */ "../views/register/"),
+  },
+  {
     path: "/explore",
     name: "Explore",
     component: () =>

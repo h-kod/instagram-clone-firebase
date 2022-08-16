@@ -33,12 +33,18 @@ export default {
 };
 </script>
 
+<style>
+@import'~bootstrap/dist/css/bootstrap.css';
+</style>
+
 <style scoped>
+
 .main {
   padding-top: 40px;
-  background-color: rgb(250, 250, 250);
+  /*background-color: rgb(250, 250, 250);*/
 }
 .footer__{
-  background-color: rgb(250, 250, 250);
+  /*background-color: rgb(250, 250, 250);*/
 }
 </style>
+

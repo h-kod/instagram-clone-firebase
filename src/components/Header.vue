@@ -32,7 +32,7 @@
           <IconLike />
         </router-link>
         </div>
-        <router-link to="/profile">
+        <router-link to="/profile" >
           <img
             src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
             alt="avatar"
@@ -55,9 +55,17 @@ import IconDirectFill from "@/icons/direct-fill.svg";
 import IconExplore from "@/icons/explore.svg";
 import IconExploreFill from "@/icons/explore-fill.svg";
 import IconLike from "@/icons/like.svg";
+// import {getAuth, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
+// const auth = getAuth();
+// console.log(auth)
 
 export default {
   name: "Header",
+  data() {
+    return {
+    // user :getAuth()
+    }
+  },
   components: {
     Container,
     IconHome,

@@ -4,7 +4,7 @@ import router from "./router";
 import store from "./store";
 import 'bootstrap';
 import { initializeApp } from "firebase/app";
-
+Vue.prototype.appName = 'My App'
 
 Vue.config.productionTip = false;
 

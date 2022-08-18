@@ -12,7 +12,6 @@
 
       <Post />
 
-      <Post />
     </div>
     <div class="sidebar">
       <div class="sidebar-profile">

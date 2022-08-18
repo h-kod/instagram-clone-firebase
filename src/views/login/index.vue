@@ -6,7 +6,6 @@
 <!--  </div>-->
 <div class="row justify-content-center ">
   <h3 class="text-center">Login</h3>
-
   <form class="col-6">
     <!-- Email input -->
     <div class="form-outline mb-4">
@@ -68,12 +67,19 @@
 </template>
 
 <script>
+
 import {getAuth, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
 export default {
   data (){
     return {
       email:'',
-      password:''
+      password:'',
+      objLogin: {
+        loggedIn:false,
+        uid:'',
+        time:''
+      },
+
     }
   },
   methods:{
@@ -82,34 +88,19 @@ export default {
       signInWithEmailAndPassword(auth, this.email, this.password)
           .then((userCredential) => {
             // Signed in
-            // const user = userCredential.user;
+            const user = userCredential.user;
             // console.log(user.uid)
-
-            const user = auth.currentUser;
-            if (user !== null) {
-              // The user object has basic properties such as display name, email, etc.
-              const displayName = user.displayName;
-              const email = user.email;
-              const photoURL = user.photoURL;
-              const emailVerified = user.emailVerified;
-              console.log(user)
-              // The user's ID, unique to the Firebase project. Do NOT use
-              // this value to authenticate with your backend server, if
-              // you have one. Use User.getToken() instead.
-              const uid = user.uid;
-            }
-
-
+            this.objLogin.loggedIn= true
           })
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorMessage)
-
+            this.objLogin.loggedIn= false
           });
+    },
 
+  },
 
-    }
-  }
 }
 </script>

@@ -16,7 +16,7 @@
           </div>
           <div class="detail-name-edit">
             <button class="action-edit" type="button">
-              <CustomText tag="b" size="normal">Edit Profile</CustomText>
+              <router-link tag="b" size="normal" to="/profileEdit">Edit Profile</router-link>
             </button>
           </div>
           <div class="icon-options">

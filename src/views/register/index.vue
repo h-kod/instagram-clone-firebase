@@ -40,7 +40,7 @@
 
     <!-- Register buttons -->
     <div class="text-center">
-      <p>Not a member? <a href="/login">Login</a></p>
+      <p>Are you already a member? <router-link to="/login" class="logo">Login</router-link></p>
       <p>or sign up with:</p>
       <button type="button" class="btn btn-link btn-floating mx-1">
         <i class="fab fa-facebook-f"></i>

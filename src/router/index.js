@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/home/index.vue";
 
+import { initializeApp } from "firebase/app";
 Vue.use(VueRouter);
 
 const routes = [
@@ -33,6 +34,12 @@ const routes = [
     name: "Explore",
     component: () =>
       import(/* webpackChunkName: "explore" */ "../views/explore/"),
+  },
+  {
+    path: "/profileEdit",
+    name: "profileEdit",
+    component: () =>
+      import(/* webpackChunkName: "explore" */ "../views/profileEdit/"),
   },
   {
     path: "/profile",
@@ -73,5 +80,22 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+
+import { getAuth } from "firebase/auth";
+
+router.beforeEach((to, from, next) => {
+  const token = sessionStorage.getItem('vue-session-key') != "{}"
+  // If logged in, or going to the Login page.
+  if (token || to.name === 'Login') {
+    // Continue to page.
+    next()
+  } else {
+    // Not logged in, redirect to login.
+    next({name: 'Login'})
+  }
+})
+
+
 
 export default router;

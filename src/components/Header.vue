@@ -32,14 +32,22 @@
           <IconLike />
         </router-link>
         </div>
-        <router-link to="/profile" >
+        <router-link to="/profile" v-show="this.$session.exists()" >
           <img
-            src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
+            src="https://img.icons8.com/ultraviolet/344/test-account.png"
             alt="avatar"
             width="30px"
             height="30px"
           />
         </router-link>
+        <a class="page-link" @click="logout" v-show="this.$session.exists()">
+          <img
+              src="https://img.icons8.com/ultraviolet/344/exit.png"
+              alt="avatar"
+              width="30px"
+              height="30px"
+          />
+        </a>
       </div>
     </Container>
   </header>
@@ -65,6 +73,12 @@ export default {
     return {
     // user :getAuth()
     }
+  },
+  methods: {
+    logout: function () {
+      this.$session.destroy()
+      this.$router.push('/login')
+    },
   },
   components: {
     Container,
@@ -122,7 +136,7 @@ export default {
 }
 
 .nav3 img {
-  padding-bottom: 5px;
+  /*padding-bottom: 5px;*/
 }
 
 .icon-like{

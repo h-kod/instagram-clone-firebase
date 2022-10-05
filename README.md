@@ -1,4 +1,5 @@
-# instagram-clone-firebase
+# Instagram Clone
+A Instagram clone app made with Vue and Firebase
 
 
 

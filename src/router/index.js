@@ -39,6 +39,14 @@ const routes = [
     name: "profileEdit",
     component: () =>
       import(/* webpackChunkName: "explore" */ "../views/profileEdit/"),
+    children: [
+      {
+        path: "edit",
+        name: "Edit",
+        component: () =>
+          import(/* webpackChunkName: "post" */ "../views/profileEdit/edit"),
+      },
+    ]
   },
   {
     path: "/profile",
@@ -81,7 +89,6 @@ const router = new VueRouter({
 });
 
 
-
 router.beforeEach((to, from, next) => {
   const token = sessionStorage.getItem('vue-session-key')
   // If logged in, or going to the Login page.
@@ -93,7 +100,6 @@ router.beforeEach((to, from, next) => {
     next({name: 'Login'})
   }
 })
-
 
 
 export default router;

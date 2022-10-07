@@ -12,9 +12,6 @@
           <li>Hashtags</li>
           <li>Locations</li>
       </ul>
-      <ul>
-          <li style="color: darkgray">© 2021 Instagram from github.com/fcyln</li>
-      </ul>
   </div>
 </template>
 

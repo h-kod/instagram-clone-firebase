@@ -114,8 +114,7 @@
             ]"
           >
             TAGGED</span
-          ></router-link
-        >
+          ></router-link>
       </div>
     </div>
     <div class="tab-view">

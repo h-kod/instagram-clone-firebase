@@ -3,9 +3,7 @@
     <Container class="header-inner">
       <div class="nav1">
         <router-link to="/" class="logo">
-          <img
-            src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
-          />
+          <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"/>
         </router-link>
       </div>
       <div class="nav2">
@@ -43,7 +41,7 @@
         <a class="page-link" @click="logout" v-show="this.$session.exists()">
           <img
               src="https://img.icons8.com/ultraviolet/344/exit.png"
-              alt="avatar"
+              alt="exit"
               width="30px"
               height="30px"
           />

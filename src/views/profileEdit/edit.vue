@@ -1,51 +1,21 @@
 <template>
   <div class="explore">
-    <div class="d-flex top">
-      <img
-          :src="photoURL"
-          alt="avatar"
-          width="180px"
-          height="180px"
-      />
 
-      <div class="d-flex flex-column">
+    <div class="">
+    <h5>Ayarlar</h5>
+    <div class="">
 
-        <h3>{{ displayName }}</h3>
-        <p><span class="h6">Email:</span> {{ email }}</p>
-        <p><span class="h6">İsim:</span></p>
-        <p><span class="h6" :class="emailVerified ? 'text-success' : 'text-danger'">E-posta adresiniz {{
-            emailVerified ? 'Doğrulandı' : 'Doğrulanmadı!'
-          }}</span>
-          <span class="ps-2"><a class="text-info" href="">Doğrula</a></span>
-        </p>
+      <input type="text" v-model="this.displayName" :placeholder="this.displayName">
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">@</span>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
       </div>
+
+
+      <button @click="profileEdit" class="btn btn-primary btn-sm">Güncelle</button>
     </div>
-    <div class="row">
-      <div class="col-auto">
-        <div class="tabs">
-          <div class="d-flex flex-column">
-            <router-link to="/profileEdit">
-              <a v-if="$route.name === 'profileEdit'"/>
-              <span> Hesap</span>
-            </router-link>
-
-            <router-link to="/profileEdit/edit">
-              <a v-if="$route.name === 'Edit'"/>
-              <span>Profilimi Düzenle</span>
-            </router-link>
-
-          </div>
-
-        </div>
-
-      </div>
-      <div class="col-4">
-        <div class="tab-view">
-          <router-view/>
-        </div>
-      </div>
-
-    </div>
+  </div>
   </div>
 </template>
 
@@ -56,44 +26,39 @@
 import CustomText from "@/components/CustomText";
 
 
-import {getAuth, onAuthStateChanged} from "firebase/auth";
-
+import {getAuth, updateProfile} from "firebase/auth";
 const auth = getAuth();
-
-
 export default {
-  name: "index",
+  name: "edit",
   data() {
     return {
       email: '',
       displayName: '',
       photoURL: '',
       emailVerified: '',
-      userin: getAuth().currentUser
     }
   },
   components: {
     CustomText,
   },
-  mounted() {
+  methods: {
+    profileEdit() {
 
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
+      updateProfile(auth.currentUser, {
 
-        this.displayName = user.displayName;
-        this.email = user.email;
-        this.photoURL = user.photoURL;
-        this.emailVerified = user.emailVerified;
+        displayName: this.displayName,
+        email: this.email,
+        photoURL: this.photoURL,
+        emailVerified: this.emailVerified,
 
+      }).then(() => {
+        // Profile updated!
         // ...
-      } else {
-        // User is signed out
+      }).catch((error) => {
+        // An error occurred
         // ...
-      }
-    });
+      });
+    }
 
 
   }

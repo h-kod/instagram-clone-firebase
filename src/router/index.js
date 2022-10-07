@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/home/index.vue";
 
-import { initializeApp } from "firebase/app";
 Vue.use(VueRouter);
 
 const routes = [
@@ -82,10 +81,9 @@ const router = new VueRouter({
 });
 
 
-import { getAuth } from "firebase/auth";
 
 router.beforeEach((to, from, next) => {
-  const token = sessionStorage.getItem('vue-session-key') != "{}"
+  const token = sessionStorage.getItem('vue-session-key')
   // If logged in, or going to the Login page.
   if (token || to.name === 'Login') {
     // Continue to page.

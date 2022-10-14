@@ -61,6 +61,12 @@ const routes = [
           import(/* webpackChunkName: "post" */ "../views/profile/post"),
       },
       {
+        path: "edit",
+        name: "ProfileEdit",
+        component: () =>
+          import(/* webpackChunkName: "igtv" */ "../views/profile/edit"),
+      },
+      {
         path: "igtv",
         name: "ProfileIGTV",
         component: () =>

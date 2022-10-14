@@ -61,6 +61,9 @@ import IconDirectFill from "@/icons/direct-fill.svg";
 import IconExplore from "@/icons/explore.svg";
 import IconExploreFill from "@/icons/explore-fill.svg";
 import IconLike from "@/icons/like.svg";
+
+
+
 // import {getAuth, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
 // const auth = getAuth();
 // console.log(auth)

@@ -40,7 +40,7 @@ export default {
 <style scoped>
 
 .main {
-  padding-top: 40px;
+  padding-top: 60px;
   /*background-color: rgb(250, 250, 250);*/
 }
 .footer__{

@@ -5,11 +5,15 @@
     <h5>Ayarlar</h5>
     <div class="">
 
-      <input type="text" v-model="this.displayName" :placeholder="this.displayName">
+      <input type="text" v-model="displayName" :placeholder="this.displayName">
 
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">@</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        <span class="input-group-text" id="basic-addon1">İsim Soyisim</span>
+        <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" v-model="displayName">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Profile Image Url</span>
+        <input type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" v-model="photoURL">
       </div>
 
 
@@ -24,10 +28,10 @@
 
 // import {getAuth, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
 import CustomText from "@/components/CustomText";
+import {getAuth, onAuthStateChanged, updateProfile} from "firebase/auth";
 
-
-import {getAuth, updateProfile} from "firebase/auth";
 const auth = getAuth();
+
 export default {
   name: "edit",
   data() {
@@ -43,7 +47,7 @@ export default {
   },
   methods: {
     profileEdit() {
-
+      console.log(this.displayName)
       updateProfile(auth.currentUser, {
 
         displayName: this.displayName,
@@ -58,9 +62,35 @@ export default {
         // An error occurred
         // ...
       });
+
+    },
+
+    userFetch(){
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          const uid = user.uid;
+
+          this.displayName = user.displayName;
+          this.email = user.email;
+          this.photoURL = user.photoURL;
+          this.emailVerified = user.emailVerified;
+
+          // ...
+        } else {
+          // User is signed out
+          // ...
+        }
+      });
     }
 
 
+
+  },
+  mounted() {
+    this.userFetch();
   }
 
 };

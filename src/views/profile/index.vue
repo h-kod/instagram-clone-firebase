@@ -3,7 +3,7 @@
     <div class="profile-header">
       <div class="head-avatar">
         <img
-          src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
+          :src="photoURL"
           alt="avatar"
           width="180px"
           height="180px"
@@ -12,11 +12,11 @@
       <div class="head-profile-detail">
         <div class="detail-name">
           <div class="detail-name-username">
-            <CustomText class="thin" size="xlarge">username</CustomText>
+            <CustomText class="thin" size="xlarge">{{ displayName }}</CustomText>
           </div>
           <div class="detail-name-edit">
             <button class="action-edit" type="button">
-              <router-link tag="b" size="normal" to="/profileEdit">Edit Profile</router-link>
+              <router-link tag="b" size="normal" to="/profile/edit">Edit Profile</router-link>
             </button>
           </div>
           <div class="icon-options">
@@ -123,22 +123,42 @@
   </div>
 </template>
 
+
+
 <script>
+// @ is an alias to /src
+
+// import {getAuth, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
+
+
+import {getAuth, onAuthStateChanged} from "firebase/auth";
+
 import CustomText from "@/components/CustomText";
 import Avatar from "@/components/Avatar";
 import Post from "@/components/Post";
 import IconOptions from "@/icons/options.svg";
-import IconPostsFill from "@/icons/posts-fill.svg";
-import IconIGTVFill from "@/icons/igtv-fill.svg";
-import IconSavedFill from "@/icons/saved-fill.svg";
-import IconTaggedFill from "@/icons/tagged-fill.svg";
 import IconPosts from "@/icons/posts.svg";
 import IconIGTV from "@/icons/igtv.svg";
 import IconSaved from "@/icons/saved.svg";
 import IconTagged from "@/icons/tagged.svg";
+import IconPostsFill from "@/icons/posts-fill.svg";
+import IconIGTVFill from "@/icons/igtv-fill.svg";
+import IconSavedFill from "@/icons/saved-fill.svg";
+import IconTaggedFill from "@/icons/tagged-fill.svg";
+
+const auth = getAuth();
 
 export default {
-  name: "profile",
+  name: "index",
+  data() {
+    return {
+      email: '',
+      displayName: '',
+      photoURL: '',
+      emailVerified: '',
+      userin: getAuth().currentUser
+    }
+  },
   components: {
     CustomText,
     Avatar,
@@ -153,8 +173,35 @@ export default {
     IconSavedFill,
     IconTaggedFill,
   },
+  mounted() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+
+        this.displayName = user.displayName;
+        this.email = user.email;
+        this.photoURL = user.photoURL;
+        this.emailVerified = user.emailVerified;
+
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+
+
+  }
+
 };
+
+
 </script>
+
+
+
 
 <style scoped>
 .home {

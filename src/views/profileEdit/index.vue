@@ -9,7 +9,6 @@
       />
 
       <div class="d-flex flex-column">
-
         <h3>{{ displayName }}</h3>
         <p><span class="h6">Email:</span> {{ email }}</p>
         <p><span class="h6">İsim:</span></p>
@@ -60,7 +59,6 @@ import {getAuth, onAuthStateChanged} from "firebase/auth";
 
 const auth = getAuth();
 
-
 export default {
   name: "index",
   data() {
@@ -75,28 +73,35 @@ export default {
   components: {
     CustomText,
   },
+  methods: {
+    userFetch(){
+      console.log("userFetch")
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          const uid = user.uid;
+
+          this.displayName = user.displayName;
+          this.email = user.email;
+          this.photoURL = user.photoURL;
+          this.emailVerified = user.emailVerified;
+
+          // ...
+        } else {
+          // User is signed out
+          // ...
+        }
+      });
+    }
+  },
   mounted() {
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-
-        this.displayName = user.displayName;
-        this.email = user.email;
-        this.photoURL = user.photoURL;
-        this.emailVerified = user.emailVerified;
-
-        // ...
-      } else {
-        // User is signed out
-        // ...
-      }
-    });
-
-
+    this.userFetch();
+  },
+  updated() {
+    this.userFetch();
   }
+
 
 };
 

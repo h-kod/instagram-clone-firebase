@@ -35,6 +35,7 @@ export default {
 
 <style>
 @import'~bootstrap/dist/css/bootstrap.css';
+@import'assets/style.css';
 </style>
 
 <style scoped>

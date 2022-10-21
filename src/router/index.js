@@ -34,20 +34,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "explore" */ "../views/explore/"),
   },
-  {
-    path: "/profileEdit",
-    name: "profileEdit",
-    component: () =>
-      import(/* webpackChunkName: "explore" */ "../views/profileEdit/"),
-    children: [
-      {
-        path: "edit",
-        name: "Edit",
-        component: () =>
-          import(/* webpackChunkName: "post" */ "../views/profileEdit/edit"),
-      },
-    ]
-  },
+
   {
     path: "/profile",
     name: "profile",

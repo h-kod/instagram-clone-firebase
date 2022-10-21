@@ -3,6 +3,7 @@
     <figure class="avatar">
       <img :src="src" :alt="alt" :width="size" :height="size" />
     </figure>
+    <p>username</p>
   </div>
 </template>
 

@@ -4,13 +4,12 @@
     <main class="main">
       <Container>
         <router-view />
+        <Footer />
       </Container>
+
     </main>
-          
+
     <footer class="footer__">
-      <Container>
-      <Footer />
-      </Container>
     </footer>
     
   </div>

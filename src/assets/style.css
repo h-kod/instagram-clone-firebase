@@ -65,8 +65,8 @@ label {
   grid-template-columns: 1fr 2fr;
 }
 .head-avatar {
-  min-width: 150px;
-  min-height: 150px;
+  /*min-width: 150px;*/
+  /*min-height: 150px;*/
   overflow: hidden;
 }
 .icon-options {
@@ -130,12 +130,12 @@ label {
 }
 
 @media screen and (min-width: 980px) {
-  .home {
-    max-width: none;
-    display: grid;
-    grid-template-rows: 195px 1fr;
-    grid-gap: 10px;
-  }
+  /*.home {*/
+  /*  max-width: none;*/
+  /*  display: grid;*/
+  /*  grid-template-rows: 195px 1fr;*/
+  /*  grid-gap: 10px;*/
+  /*}*/
 
   .profile-header {
     padding-right: 10px;
@@ -174,7 +174,7 @@ label {
   }
 
   .head-avatar img {
-    border-radius: 50%;
+    /*border-radius: 50%;*/
   }
 
   .thin {

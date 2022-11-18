@@ -24,11 +24,6 @@ export default {
 
 <style>
 
-.footer{
-    display: none;
-}
-
-
 @media screen and (min-width: 980px) {
 .footer {
     display: flex;

@@ -1,26 +1,26 @@
 <template>
-  <div class="home">
-    <div class="timeline">
+  <div class="d-flex">
+    <div class="timeline col-9">
       <div class="stories">
-        <Avatar :size="52" />
-        <Avatar :size="52" />
-        <Avatar :size="52" />
-        <Avatar :size="52" />
-        <Avatar :size="52" />
-        <Avatar :size="52" />
+        <Avatar :size="52"/>
+        <Avatar :size="52"/>
+        <Avatar :size="52"/>
+        <Avatar :size="52"/>
+        <Avatar :size="52"/>
+        <Avatar :size="52"/>
       </div>
 
-      <Post />
+      <Post/>
 
     </div>
-    <div class="sidebar">
+    <div class="sidebar col">
       <div class="sidebar-profile">
         <div class="head-avatar">
           <img
-            src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
-            alt="avatar"
-            width="60px"
-            height="60px"
+              src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
+              alt="avatar"
+              width="20px"
+              height="20px"
           />
         </div>
         <div class="sidebar-name">
@@ -32,7 +32,9 @@
           </div>
         </div>
         <div class="sidebar-switch">
-          <p><CustomText tag="b" size="large">Switch</CustomText></p>
+          <p>
+            <CustomText tag="b" size="large">Switch</CustomText>
+          </p>
         </div>
       </div>
       <div class="suggestions">
@@ -46,10 +48,10 @@
       <div class="sidebar-sug-profile">
         <div class="head-avatar">
           <img
-            src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
-            alt="avatar"
-            width="40px"
-            height="40px"
+              src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
+              alt="avatar"
+              width="40px"
+              height="40px"
           />
         </div>
         <div class="sidebar-name">
@@ -61,16 +63,18 @@
           </div>
         </div>
         <div class="sidebar-switch">
-          <p><CustomText tag="b" size="large">Follow</CustomText></p>
+          <p>
+            <CustomText tag="b" size="large">Follow</CustomText>
+          </p>
         </div>
       </div>
       <div class="sidebar-sug-profile">
         <div class="head-avatar">
           <img
-            src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
-            alt="avatar"
-            width="40px"
-            height="40px"
+              src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
+              alt="avatar"
+              width="40px"
+              height="40px"
           />
         </div>
         <div class="sidebar-name">
@@ -82,16 +86,18 @@
           </div>
         </div>
         <div class="sidebar-switch">
-          <p><CustomText tag="b" size="large">Follow</CustomText></p>
+          <p>
+            <CustomText tag="b" size="large">Follow</CustomText>
+          </p>
         </div>
       </div>
       <div class="sidebar-sug-profile">
         <div class="head-avatar">
           <img
-            src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
-            alt="avatar"
-            width="40px"
-            height="40px"
+              src="https://img.pngio.com/profile-icon-png-image-free-download-searchpngcom-profile-icon-png-673_673.png"
+              alt="avatar"
+              width="40px"
+              height="40px"
           />
         </div>
         <div class="sidebar-name">
@@ -103,7 +109,9 @@
           </div>
         </div>
         <div class="sidebar-switch">
-          <p><CustomText tag="b" size="large">Follow</CustomText></p>
+          <p>
+            <CustomText tag="b" size="large">Follow</CustomText>
+          </p>
         </div>
       </div>
     </div>
@@ -115,6 +123,13 @@ import CustomText from "@/components/CustomText";
 import Avatar from "@/components/Avatar";
 import Post from "@/components/Post";
 
+import {getAuth, onAuthStateChanged, signInWithEmailAndPassword} from "firebase/auth";
+
+import {initializeApp} from 'firebase/app';
+import {getFirestore, collection, getDocs} from 'firebase/firestore/lite';
+import {FirebaseAuth} from "@/main";
+
+
 export default {
   name: "index",
   components: {
@@ -122,18 +137,52 @@ export default {
     Avatar,
     Post,
   },
-};
+  mounted() {
+    // this.listAllUsers()
+    // console.log(getFirestore);
+    FirebaseAuth.signIn();
+
+  },
+  methods: {
+
+    listAllUsers() {
+      // List batch of users, 1000 at a time.
+
+      // getAuth()
+      //     .listUsers(1000)
+      //     .then((listUsersResult) => {
+      //       listUsersResult.users.forEach((userRecord) => {
+      //         console.log('user', userRecord.toJSON());
+      //       });
+      //       if (listUsersResult.pageToken) {
+      //         // List next batch of users.
+      //         listAllUsers(listUsersResult.pageToken);
+      //       }
+      //
+      //     })
+      //     .catch((error) => {
+      //       console.log('Error listing users:', error);
+      //     });
+    }
+  }
+}
+
+
 </script>
 
 <style scoped>
 .home {
-  max-width: 685px;
+  max-width: 915px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
 }
+
 .sidebar {
-  display: none;
+  /*display: none;*/
+  /*min-width: 400px;*/
 }
+
 .stories {
   border-radius: 3px;
   border: 1px solid rgb(209, 209, 209);
@@ -149,28 +198,31 @@ export default {
 }
 
 @media screen and (min-width: 980px) {
-  .home {
-    max-width: none;
-    display: grid;
-    grid-template-columns: 1fr 295px;
-    grid-gap: 10px;
-  }
-
+  /*.home {*/
+  /*  max-width: none;*/
+  /*  display: grid;*/
+  /*  grid-template-columns: 1fr 295px;*/
+  /*  grid-gap: 10px;*/
+  /*}*/
   .timeline {
-  padding-right: 10px;
-}
+    padding-right: 10px;
+    max-width: 670px;
+  }
 
   .sidebar {
     display: block;
   }
+
   .head-avatar {
     display: inline-flex;
     border-radius: 50%;
     cursor: pointer;
   }
+
   .head-avatar img {
     border-radius: 50%;
   }
+
   .sidebar-profile {
     margin-bottom: 20px;
     height: 115px;
@@ -179,6 +231,7 @@ export default {
     align-items: center;
     padding: 5px;
   }
+
   .sidebar-sug-profile {
     height: 45px;
     display: flex;
@@ -186,15 +239,19 @@ export default {
     align-items: center;
     padding: 5px;
   }
+
   .sidebar-username {
     cursor: pointer;
   }
+
   .sidebar-name {
     margin-left: 16px;
   }
+
   .sidebar-displayname {
     color: gray;
   }
+
   .sidebar-switch {
     margin-left: auto;
     margin-right: 0;
@@ -207,6 +264,7 @@ export default {
     color: #0095f6;
     padding-right: 16px;
   }
+
   .suggestions {
     display: flex;
     flex-direction: row;
